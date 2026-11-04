@@ -1,0 +1,28 @@
+body {
+            font-family: 'Inter', sans-serif;
+            background: #F8FAFC;
+        }
+
+        .sidebar {
+            transition: transform .3s ease;
+        }
+
+        .nav-link {
+            transition: all .2s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #EFF6FF;
+            color: #2563EB;
+        }
+
+        @media (max-width: 767px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+        }

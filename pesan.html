@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pesan Masuk - Campus Freelancer</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="css/pesan.css">
+</head>
+
+<body class="text-slate-800">
+
+<div class="min-h-screen flex">
+
+    <!-- OVERLAY MOBILE -->
+    <div id="overlay"
+         onclick="toggleSidebar()"
+         class="fixed inset-0 bg-black/40 z-40 hidden md:hidden">
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar"
+           class="fixed md:sticky top-0 left-0 z-50 w-64 h-screen bg-white border-r border-slate-200 flex flex-col p-5 -translate-x-full md:translate-x-0">
+
+        <div class="flex items-center gap-3 mb-9">
+
+            <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div>
+                <h1 class="font-extrabold text-lg">
+                    Campus<span class="text-blue-600">Freelance</span>
+                </h1>
+                <p class="text-xs text-slate-400">Network Platform</p>
+            </div>
+
+            <button onclick="toggleSidebar()"
+                    class="ml-auto md:hidden text-slate-500 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+        <p class="text-xs font-bold text-slate-400 uppercase mb-3">
+            Menu Utama
+        </p>
+
+        <nav class="space-y-1">
+
+            <a href="index.html" class="sidebar-link">
+                <i class="fa-solid fa-house w-5"></i>
+                Dashboard
+            </a>
+
+            <a href="freelance.html" class="sidebar-link">
+                <i class="fa-solid fa-briefcase w-5"></i>
+                Freelance
+            </a>
+
+            <a href="peta.html" class="sidebar-link">
+                <i class="fa-solid fa-map-location-dot w-5"></i>
+                Peta Freelancer
+            </a>
+
+            <a href="kontak.html" class="sidebar-link">
+                <i class="fa-regular fa-envelope w-5"></i>
+                Kontak
+            </a>
+
+            <a href="pesan.html" class="sidebar-link active">
+                <i class="fa-solid fa-inbox w-5"></i>
+                Pesan Masuk
+
+                <span id="sidebarCount"
+                      class="ml-auto text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">
+                    0
+                </span>
+            </a>
+
+            <a href="login.html" class="sidebar-link">
+                <i class="fa-solid fa-right-from-bracket w-5"></i>
+                Keluar
+            </a>
+
+        </nav>
+
+        <div class="mt-auto bg-blue-50 rounded-xl p-4">
+            <p class="font-semibold text-sm text-blue-800">
+                Admin Campus Freelancer
+            </p>
+
+            <p class="text-xs text-blue-600 mt-1">
+                Kelola pesan yang masuk dari pengguna.
+            </p>
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 min-w-0">
+
+        <!-- HEADER -->
+        <header class="bg-white border-b border-slate-200 px-5 md:px-8 py-4 flex justify-between items-center">
+
+            <div class="flex items-center gap-3">
+
+                <button onclick="toggleSidebar()"
+                        class="md:hidden text-slate-600 text-xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <p class="text-sm text-slate-400">
+                        Menu / Pesan Masuk
+                    </p>
+
+                    <h2 class="text-xl font-bold">
+                        Pesan Masuk
+                    </h2>
+                </div>
+
+            </div>
+
+            <a href="index.html"
+               class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center">
+
+                <i class="fa-solid fa-user"></i>
+
+            </a>
+
+        </header>
+
+        <!-- CONTENT -->
+        <section class="p-5 md:p-8 max-w-6xl mx-auto">
+
+            <!-- INTRO -->
+            <div class="mb-8">
+
+                <p class="text-blue-600 font-semibold text-sm mb-2">
+                    ADMINISTRATOR
+                </p>
+
+                <h1 class="text-3xl font-extrabold mb-3">
+                    Kotak Pesan
+                </h1>
+
+                <p class="text-slate-500">
+                    Lihat dan kelola semua pesan yang dikirim melalui halaman Kontak.
+                </p>
+
+            </div>
+
+            <!-- STATISTIK -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+
+                <div class="bg-white border border-slate-200 rounded-2xl p-5">
+
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-11 h-11 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-envelope text-xl"></i>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-slate-500">
+                        Total Pesan
+                    </p>
+
+                    <h2 id="totalPesan"
+                        class="text-3xl font-extrabold mt-1">
+                        0
+                    </h2>
+
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl p-5">
+
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-11 h-11 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-envelope-open text-xl"></i>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-slate-500">
+                        Belum Dibaca
+                    </p>
+
+                    <h2 id="belumDibaca"
+                        class="text-3xl font-extrabold mt-1">
+                        0
+                    </h2>
+
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl p-5">
+
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-11 h-11 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-check-double text-xl"></i>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-slate-500">
+                        Sudah Dibaca
+                    </p>
+
+                    <h2 id="sudahDibaca"
+                        class="text-3xl font-extrabold mt-1">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <!-- DAFTAR PESAN -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-5 md:p-7">
+
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+
+                    <div>
+                        <h2 class="text-xl font-bold">
+                            Daftar Pesan
+                        </h2>
+
+                        <p class="text-sm text-slate-500 mt-1">
+                            Semua pesan dari pengguna Campus Freelancer.
+                        </p>
+                    </div>
+
+                    <button onclick="loadMessages()"
+                            class="border border-slate-200 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-slate-50">
+
+                        <i class="fa-solid fa-rotate-right mr-2"></i>
+                        Perbarui
+
+                    </button>
+
+                </div>
+
+                <!-- SEARCH -->
+                <div class="relative mb-5">
+
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+
+                    <input
+                        type="text"
+                        id="searchMessage"
+                        oninput="renderMessages()"
+                        placeholder="Cari nama atau subjek pesan..."
+                        class="w-full border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-200">
+
+                </div>
+
+                <!-- FILTER -->
+                <div class="flex flex-wrap gap-2 mb-6">
+
+                    <button onclick="setFilter('semua')"
+                            id="filterSemua"
+                            class="filter-btn bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+                        Semua
+                    </button>
+
+                    <button onclick="setFilter('belum')"
+                            id="filterBelum"
+                            class="filter-btn bg-slate-100 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold">
+                        Belum Dibaca
+                    </button>
+
+                    <button onclick="setFilter('sudah')"
+                            id="filterSudah"
+                            class="filter-btn bg-slate-100 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold">
+                        Sudah Dibaca
+                    </button>
+
+                </div>
+
+                <!-- LIST PESAN -->
+                <div id="messageList" class="space-y-4">
+                </div>
+
+                <!-- EMPTY STATE -->
+                <div id="emptyMessage" class="hidden text-center py-14">
+
+                    <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa-regular fa-envelope-open"></i>
+                    </div>
+
+                    <h3 id="emptyTitle" class="font-bold text-lg mb-2">
+                        Belum Ada Pesan
+                    </h3>
+
+                    <p id="emptyDescription" class="text-sm text-slate-500">
+                        Pesan dari halaman Kontak akan muncul di sini.
+                    </p>
+
+                    <a href="kontak.html"
+                       class="inline-block mt-5 bg-blue-600 text-white px-5 py-3 rounded-xl text-sm font-semibold hover:bg-blue-700">
+                        Buka Halaman Kontak
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAL DETAIL PESAN -->
+<div id="detailModal"
+     class="hidden fixed inset-0 bg-slate-900/50 z-[60] items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl w-full max-w-lg p-6 max-h-[90vh] overflow-y-auto">
+
+        <div class="flex justify-between items-center mb-6">
+
+            <h2 class="text-xl font-bold">
+                Detail Pesan
+            </h2>
+
+            <button onclick="closeModal()"
+                    class="text-slate-400 hover:text-slate-700 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+        <div class="space-y-4">
+
+            <div>
+                <p class="text-xs text-slate-400 mb-1">Nama Pengirim</p>
+                <p id="detailNama" class="font-semibold"></p>
+            </div>
+
+            <div>
+                <p class="text-xs text-slate-400 mb-1">Email</p>
+                <p id="detailEmail" class="font-semibold break-all"></p>
+            </div>
+
+            <div>
+                <p class="text-xs text-slate-400 mb-1">Subjek</p>
+                <p id="detailSubjek" class="font-semibold"></p>
+            </div>
+
+            <div>
+                <p class="text-xs text-slate-400 mb-1">Tanggal</p>
+                <p id="detailTanggal" class="text-sm"></p>
+            </div>
+
+            <div class="border-t pt-4">
+
+                <p class="text-xs text-slate-400 mb-2">
+                    Isi Pesan
+                </p>
+
+                <div id="detailIsi"
+                     class="bg-slate-50 rounded-xl p-4 text-sm leading-7 whitespace-pre-wrap break-words">
+                </div>
+
+            </div>
+
+        </div>
+
+        <button onclick="closeModal()"
+                class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
+            Tutup
+        </button>
+
+    </div>
+
+</div>
+
+
+
+
+    <script src="js/pesan.js"></script>
+</body>
+</html>
